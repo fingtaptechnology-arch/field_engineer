@@ -1,5 +1,4 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+
 
 const categories = [
   "Artificial Intelligence",
@@ -88,7 +87,6 @@ const popularPost = {
 const Blog = () => {
   return (
     <>
-      <Header />
 
       <section className="blog-page">
         <div className="blog-page__banner">
@@ -147,8 +145,6 @@ const Blog = () => {
           </a>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 };

@@ -1,13 +1,13 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const stats = [
-  { value: "190+", label: "Countries", sublabel: "Global Presence" },
+  { value: "200+", label: "Countries", sublabel: "Global Presence" },
   { value: "1100", label: "Vendor Skills & Certifications", sublabel: "Talent" },
   { value: "300", label: "Have Hired on FE Platform", sublabel: "Customers" },
 ];
 
-const EngineerSignUp = () => {
+const BusinessSignUp = () => {
   return (
     <>
       <Header />
@@ -23,14 +23,14 @@ const EngineerSignUp = () => {
         </div>
 
         <div className="auth-page__banner">
-          <p>Do you want to post jobs and engage engineers?</p>
-          <a href="/business-signup">click here to sign up as a customer</a>
+          <p>Are you a freelance engineer looking for work?</p>
+          <a href="/engineer-signup">click here to signup to work</a>
         </div>
 
         <div className="auth-page__body">
           <div className="auth-page__form-col">
-            <h1>Engineer Sign Up</h1>
-            <p className="auth-page__tagline">Apply for Jobs</p>
+            <h1>Sign Up To Find &amp; Hire Engineers</h1>
+            <p className="auth-page__tagline">Hire An Engineer</p>
             <p className="auth-page__subheading">Sign Up Below</p>
             <p className="auth-page__login-hint">
               Already have an account?{" "}
@@ -38,8 +38,8 @@ const EngineerSignUp = () => {
             </p>
 
             <form className="auth-page__form" onSubmit={(e) => e.preventDefault()}>
-              <input type="text" placeholder="First Name" required />
-              <input type="text" placeholder="Last Name" required />
+              <input type="text" placeholder="Company Name" required />
+              <input type="text" placeholder="Full Name" required />
               <input type="email" placeholder="Email Address" required />
               <input type="password" placeholder="Password" required />
 
@@ -53,41 +53,21 @@ const EngineerSignUp = () => {
               </label>
 
               <button type="submit" className="header__btn header__btn--primary">
-                Sign Up
+                Signup to start hiring
               </button>
             </form>
-
-            <div className="auth-page__app-download">
-              <h4>Download our app to sign up and get started</h4>
-              <div className="footer__app-badges auth-page__app-badges">
-                <a href="https://itunes.apple.com/us/app/field-engineer/id1147116800?mt=8">
-                  <img src="/assets/appstore.png" alt="Download on the App Store" />
-                </a>
-                <a href="https://play.google.com/store/apps/details?id=com.ionicframework.fe&hl=en">
-                  <img src="/assets/googleplay.png" alt="Get it on Google Play" />
-                </a>
-              </div>
-              <p>
-                or{" "}
-                <a href="https://app.fieldengineer.com/login">click here</a> to
-                login &amp; complete signup.
-              </p>
-            </div>
           </div>
 
           <div className="auth-page__image-col">
             <img
-              src="/assets/engineer-signup-device.png"
-              alt="Field Engineer app preview"
+              src="/assets/business-signup-device.png"
+              alt="Field Engineer dashboard preview"
             />
           </div>
         </div>
 
         <div className="auth-page__intro">
-          <h2>
-            Companies Need You. Start Applying for Jobs. Work When and Where
-            You Like With Field Engineer.
-          </h2>
+          <h2>Hire On-Demand Freelance Engineers. Start Posting Jobs.</h2>
         </div>
 
         <div className="auth-page__stats">
@@ -106,4 +86,4 @@ const EngineerSignUp = () => {
   );
 };
 
-export default EngineerSignUp;
+export default BusinessSignUp;
