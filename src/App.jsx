@@ -1,14 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-
-import ContactUs from "./pages/ContactUs/ContactUs";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
+import ContactUs from "./pages/ContactUs/ContactUs";
+import Blog from "./pages/Blog/Blog";
+import EngineerSignUp from "./pages/EngineerSignUp/EngineerSignUp";
+import BusinessSignUp from "./pages/BusinessSignUp/BusinessSignUp";
+
 function App() {
-  return <ContactUs />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/blogs" element={<Blog />} />
+        <Route path="/engineer-signup" element={<EngineerSignUp />} />
+        <Route path="/business-signup" element={<BusinessSignUp />} />
+        <Route path="*" element={<Navigate to="/contact" replace />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
