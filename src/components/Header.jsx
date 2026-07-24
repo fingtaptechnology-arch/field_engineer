@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "How it Works", href: "/how-it-works-businesses" },
@@ -12,16 +13,16 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header__container">
-        <a href="/" className="header__logo">
+        <Link to="/" className="header__logo">
           <span className="header__logo-mark">FE</span>
           <span className="header__logo-word">FIELD ENGINEER</span>
-        </a>
+        </Link>
 
         <nav className={`header__nav ${menuOpen ? "header__nav--open" : ""}`}>
           {navLinks.map((link) => (
-            <a href={link.href} key={link.label} className="header__nav-link">
+            <Link to={link.href} key={link.label} className="header__nav-link">
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -29,9 +30,9 @@ const Header = () => {
           <div className="header__signup">
             <span className="header__signup-label">SIGNUP</span>
             <div className="header__signup-btns">
-              <a href="/business-signup">Hire an Engineer</a>
+              <Link to="/business-signup">Hire an Engineer</Link>
               <span className="header__signup-divider"></span>
-              <a href="/engineer-signup">Apply for Jobs</a>
+              <Link to="/engineer-signup">Apply for Jobs</Link>
             </div>
           </div>
           <a href="https://app.fieldengineer.com/login" className="header__login">

@@ -1,21 +1,29 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import Header from './components/Header'
+import Footer from './components/Footer'
 
-import ContactUs from "./pages/ContactUs/ContactUs";
-import Blog from "./pages/Blog/Blog";
-import EngineerSignUp from "./pages/EngineerSignUp/EngineerSignUp";
-import BusinessSignUp from "./pages/BusinessSignUp/BusinessSignUp";
+import amnaRoutes from './routes/amna.routes'
+import umarRoutes from './routes/umar.routes'
+import roshniRoutes from './routes/roshni.routes'
+
+const allRoutes = [...amnaRoutes, ...umarRoutes, ...roshniRoutes]
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/blogs" element={<Blog />} />
-        <Route path="/engineer-signup" element={<EngineerSignUp />} />
-        <Route path="/business-signup" element={<BusinessSignUp />} />
-        <Route path="*" element={<Navigate to="/contact" replace />} />
-      </Routes>
+      <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Header />
+        <main style={{ flex: 1 }}>
+          <Routes>
+            {allRoutes.map((route) => (
+              <Route key={route.path} path={route.path} element={route.element} />
+            ))}
+            <Route path="*" element={<Navigate to="/contact" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </BrowserRouter>
   );
 }
