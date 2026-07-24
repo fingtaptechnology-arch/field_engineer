@@ -1,5 +1,4 @@
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+
 
 const contactOptions = [
   {
@@ -45,7 +44,6 @@ const faqs = [
 const ContactUs = () => {
   return (
     <>
-      <Header />
 
       <section className="page-hero">
         <h1>Contact Us</h1>
@@ -94,8 +92,6 @@ const ContactUs = () => {
           </a>
         </div>
       </section>
-
-      <Footer />
     </>
   );
 };
