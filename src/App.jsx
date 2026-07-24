@@ -6,6 +6,10 @@ import Footer from './components/Footer'
 import amnaRoutes from './routes/amna.routes'
 import umarRoutes from './routes/umar.routes'
 import roshniRoutes from './routes/roshni.routes'
+import './styles/main.css'
+import './styles/amna.css'
+import './styles/umar.css'
+import './styles/roshni.css'
 
 const allRoutes = [...amnaRoutes, ...umarRoutes, ...roshniRoutes]
 
