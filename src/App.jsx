@@ -3,6 +3,7 @@ import "./App.css";
 
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Blog from "./pages/Blog/Blog";
+import BlogPost from "./pages/BlogPost/BlogPost";
 import EngineerSignUp from "./pages/EngineerSignUp/EngineerSignUp";
 import BusinessSignUp from "./pages/BusinessSignUp/BusinessSignUp";
 
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/blogs" element={<Blog />} />
+        <Route path="/blogs/:slug" element={<BlogPost />} />
         <Route path="/engineer-signup" element={<EngineerSignUp />} />
         <Route path="/business-signup" element={<BusinessSignUp />} />
         <Route path="*" element={<Navigate to="/contact" replace />} />
