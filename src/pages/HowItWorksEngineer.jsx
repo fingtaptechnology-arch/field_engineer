@@ -78,7 +78,29 @@ const HowItWorksEngineer = () => {
             </a>
           </div>
         </div>
-        <div className="hiw-eng-hero__image"></div>
+        <div className="hiw-eng-hero__image">
+          <div className="hiw-eng-hero__phone">
+            <div className="hiw-eng-hero__phone-notch"></div>
+            <div className="hiw-eng-hero__phone-header">On Site</div>
+            <div className="hiw-eng-hero__phone-list">
+              {[
+                { title: "Router Installation", meta: "16 May · 0700", price: "$900" },
+                { title: "Router Installation", meta: "18 May · 0900", price: "$900" },
+                { title: "Internet Installation", meta: "20 May · 0900", price: "$640" },
+                { title: "Cable Technician", meta: "22 May · 0900", price: "$450" },
+                { title: "Battery Technician", meta: "27 May · 0900", price: "$720" },
+              ].map((job) => (
+                <div className="hiw-eng-hero__phone-item" key={job.title}>
+                  <div>
+                    <p>{job.title}</p>
+                    <span>{job.meta}</span>
+                  </div>
+                  <span className="hiw-eng-hero__phone-price">{job.price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="home-feature">

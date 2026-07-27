@@ -198,6 +198,12 @@
   font-weight: 400;
 }
 
+.home-feature__mock-status {
+  color: #d68a00;
+  font-weight: 700;
+  font-size: 0.78rem;
+}
+
 .home-feature__mock-tracker span {
   display: block;
   font-weight: 700;
@@ -515,23 +521,90 @@
 }
 
 .hiw-hero__image {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 10px;
+  position: relative;
   min-height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.hiw-hero__mock {
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+.hiw-hero__mock-topbar {
+  background: #eef1f5;
+  padding: 8px 12px;
+  display: flex;
+  gap: 6px;
+}
+
+.hiw-hero__mock-topbar span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d4d9e0;
+}
+
+.hiw-hero__mock-body {
+  display: flex;
+  min-height: 200px;
+}
+
+.hiw-hero__mock-sidebar {
+  width: 60px;
+  background: #14314f;
+}
+
+.hiw-hero__mock-main {
+  flex: 1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hiw-hero__mock-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hiw-hero__mock-header span:first-child {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #14314f;
+}
+
+.hiw-hero__mock-sub {
+  font-size: 0.7rem;
+  color: #8a94a3;
+}
+
+.hiw-hero__mock-map {
+  flex: 1;
+  min-height: 120px;
+  border-radius: 8px;
+  background: linear-gradient(160deg, #dfe9ee, #c9dbe2);
+}
+
 .hiw-hero__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(20, 49, 79, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.15);
 }
 
 @media (max-width: 800px) {
@@ -800,10 +873,68 @@
 }
 
 .hiw-eng-hero__image {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  border-radius: 24px;
-  min-height: 260px;
+  display: flex;
+  justify-content: center;
+}
+
+.hiw-eng-hero__phone {
+  width: 100%;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 26px;
+  padding: 14px 12px 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.hiw-eng-hero__phone-notch {
+  width: 60px;
+  height: 6px;
+  border-radius: 4px;
+  background: #e2e6ec;
+  margin: 0 auto 12px;
+}
+
+.hiw-eng-hero__phone-header {
+  background: #14314f;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.hiw-eng-hero__phone-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hiw-eng-hero__phone-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #eef1f5;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.hiw-eng-hero__phone-item p {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #14314f;
+}
+
+.hiw-eng-hero__phone-item span {
+  font-size: 0.68rem;
+  color: #9aa5b1;
+}
+
+.hiw-eng-hero__phone-price {
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  color: #1c7c3f !important;
 }
 
 @media (max-width: 800px) {

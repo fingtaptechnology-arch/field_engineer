@@ -65,6 +65,23 @@ const HowItWorksBusiness = () => {
           </a>
         </div>
         <div className="hiw-hero__image">
+          <div className="hiw-hero__mock">
+            <div className="hiw-hero__mock-topbar">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className="hiw-hero__mock-body">
+              <div className="hiw-hero__mock-sidebar"></div>
+              <div className="hiw-hero__mock-main">
+                <div className="hiw-hero__mock-header">
+                  <span>Good Afternoon Jane</span>
+                  <span className="hiw-hero__mock-sub">Today, May 15th: you have 5 scheduled jobs and 2 requiring action</span>
+                </div>
+                <div className="hiw-hero__mock-map"></div>
+              </div>
+            </div>
+          </div>
           <div className="hiw-hero__play">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="#fff">
               <path d="M8 5v14l11-7z" />
