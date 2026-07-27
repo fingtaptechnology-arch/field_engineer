@@ -1,10 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-const statCards = [
-  { label: "Open Jobs", value: "18" },
-  { label: "Active Engineers", value: "42" },
-  { label: "Completed Jobs", value: "263" },
-  { label: "Total Spend", value: "$54,200" },
+const navItems = [
+  { key: "dashboard", label: "Dashboard", icon: "🏠" },
+  { key: "my-jobs", label: "My Jobs", icon: "📍" },
+  { key: "my-projects", label: "My Projects", icon: "🗂" },
+  { key: "engineer", label: "Engineer", icon: "👥" },
+  { key: "messages", label: "Messages", icon: "💬" },
+  { key: "funds", label: "Funds", icon: "💰", sub: "Wallet: $0.00" },
+  { key: "reporting", label: "Reporting", icon: "📊" },
+  { key: "time-management", label: "Time Management", icon: "⏱" },
+  { key: "manage-users", label: "Manage Users", icon: "🧑‍💼" },
+  { key: "custom-field", label: "Custom Field", icon: "📋" },
 ];
 
 const activity = [
@@ -13,96 +19,266 @@ const activity = [
     text: "C441632283 have logged on to Field Engineer",
   },
   {
-    time: "22 Jul 2026 @ 11:06 AM",
-    text: "C441632283 have logged on to Field Engineer",
+    time: "24 Jul 2026 @ 5:58 PM",
+    text: "A new job has been posted to the Marketplace",
   },
   {
-    time: "21 Jul 2026 @ 10:28 AM",
-    text: "C441632283 have logged on to Field Engineer",
+    time: "23 Jul 2026 @ 4:12 PM",
+    text: "Job #A28193 has moved into Jeopardy",
   },
   {
-    time: "20 Jul 2026 @ 12:50 PM",
-    text: "C441632283 have logged on to Field Engineer",
-  },
-  {
-    time: "18 Jul 2026 @ 9:14 AM",
-    text: "New job FTS62113 posted by Muhammad",
+    time: "22 Jul 2026 @ 11:03 AM",
+    text: "A visit was marked complete for Job #A28190",
   },
 ];
 
-const outlookWeeks = [
-  { label: "Wk 1", value: 6 },
-  { label: "Wk 2", value: 10 },
-  { label: "Wk 3", value: 4 },
-  { label: "Wk 4", value: 8 },
-];
-
-const Dashboard = () => {
-  const [month, setMonth] = useState("July - 2026");
-  const maxValue = Math.max(...outlookWeeks.map((w) => w.value));
+function Sidebar() {
+  const [active, setActive] = useState("dashboard");
 
   return (
-    <>
-      <section className="dashboard-page">
-        <div className="dashboard-page__grid">
-          <div className="dashboard-page__main">
-            <div className="dashboard-page__stats">
-              {statCards.map((card) => (
-                <div className="dashboard-page__stat-card" key={card.label}>
-                  <p className="dashboard-page__stat-value">{card.value}</p>
-                  <p className="dashboard-page__stat-label">{card.label}</p>
-                </div>
-              ))}
+    <aside className="fe-dash-sidebar">
+      <div className="fe-dash-sidebar-top">
+        <div className="fe-dash-logo">
+          FE
+          <span>FIELD ENGINEER</span>
+        </div>
+        <button type="button" className="fe-dash-hamburger" aria-label="Menu">
+          &#9776;
+        </button>
+      </div>
+
+      <button type="button" className="fe-dash-create-job">
+        <span className="fe-plus">+</span> Create Job
+      </button>
+
+      <nav className="fe-dash-nav">
+        <ul>
+          {navItems.map((item) => (
+            <li key={item.key}>
+              <button
+                type="button"
+                className={`fe-dash-nav-btn ${
+                  active === item.key ? "is-active" : ""
+                }`}
+                onClick={() => setActive(item.key)}
+              >
+                <span className="fe-dash-nav-icon">{item.icon}</span>
+                <span className="fe-dash-nav-label">
+                  {item.label}
+                  {item.sub && (
+                    <span className="fe-dash-nav-sub">{item.sub}</span>
+                  )}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="fe-dash-sidebar-bottom">
+        <button type="button" className="fe-dash-user">
+          <span className="fe-dash-avatar" />
+          Muhammad Chaudry
+        </button>
+        <a href="#feedback">Feedback</a>
+        <a href="#release-notes">Release Notes</a>
+        <a href="#settings">Settings</a>
+        <a href="#signout">Sign Out</a>
+        <button type="button" className="fe-dash-help-btn">
+          Need help?
+        </button>
+      </div>
+    </aside>
+  );
+}
+
+function TopBar() {
+  return (
+    <div className="fe-dash-topbar">
+      <div className="fe-dash-search">
+        <span className="fe-dash-search-icon">&#128269;</span>
+        <input type="text" placeholder="Search" />
+      </div>
+      <button
+        type="button"
+        className="fe-dash-bell"
+        aria-label="Notifications"
+      >
+        &#128276;
+        <span className="fe-dash-bell-badge">4</span>
+      </button>
+    </div>
+  );
+}
+
+function OverviewBar() {
+  return (
+    <section className="fe-dash-card fe-dash-overview">
+      <h2>Muhammad Chaudry - Workorder Overview</h2>
+      <div className="fe-dash-overview-bar" />
+      <div className="fe-dash-overview-legend">
+        <span>
+          <i className="fe-dot fe-dot-teal" /> Unassigned (1)
+        </span>
+        <span>
+          <i className="fe-dot fe-dot-red" /> In Jeopardy (1)
+        </span>
+      </div>
+    </section>
+  );
+}
+
+function MarketplaceCard() {
+  return (
+    <div className="fe-dash-card fe-dash-panel">
+      <div className="fe-dash-panel-header">
+        <span className="fe-dash-panel-icon">&#9432;</span>
+        <h3>Marketplace Job(s)</h3>
+      </div>
+      <ul className="fe-dash-stat-list">
+        <li>
+          <strong>1</strong> job(s) are unassigned
+        </li>
+        <li>
+          <strong>0</strong> job(s) have no applicant
+        </li>
+        <li>
+          <strong>0</strong> job(s) are pending acceptance
+        </li>
+        <li>
+          <strong>1</strong> Job(s) are in Jeopardy
+        </li>
+      </ul>
+      <div className="fe-dash-panel-footer">
+        <button type="button" className="fe-dash-primary-btn">
+          Marketplace
+        </button>
+        <label className="fe-dash-select">
+          Job Owner
+          <select defaultValue="All">
+            <option>All</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  );
+}
+
+function UnpaidVisitsCard() {
+  return (
+    <div className="fe-dash-card fe-dash-panel">
+      <div className="fe-dash-panel-header">
+        <span className="fe-dash-panel-icon">&#36;</span>
+        <h3>Unpaid Visits</h3>
+      </div>
+      <ul className="fe-dash-stat-list">
+        <li>
+          <strong>0</strong> Fixed pay visit(s)
+        </li>
+        <li>
+          <strong>0</strong> Hourly pay visit(s)
+        </li>
+      </ul>
+      <div className="fe-dash-panel-footer">
+        <button type="button" className="fe-dash-primary-btn">
+          Review Visits
+        </button>
+        <label className="fe-dash-select">
+          Job Owner
+          <select defaultValue="All">
+            <option>All</option>
+          </select>
+        </label>
+      </div>
+    </div>
+  );
+}
+
+function JobMessagesCard() {
+  return (
+    <div className="fe-dash-card fe-dash-panel">
+      <div className="fe-dash-panel-header">
+        <span className="fe-dash-panel-icon">&#9432;</span>
+        <h3>Job Messages</h3>
+      </div>
+      <p className="fe-dash-messages-empty">You have 0 unread messages.</p>
+      <div className="fe-dash-panel-footer">
+        <button type="button" className="fe-dash-primary-btn">
+          View messages
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ProfileCard() {
+  return (
+    <div className="fe-dash-card fe-dash-profile">
+      <div className="fe-dash-profile-top">
+        <span className="fe-dash-avatar fe-dash-avatar-lg" />
+        <div>
+          <p className="fe-dash-profile-name">Muhammad Chaudry</p>
+          <p className="fe-dash-profile-company">FingTap Solutions</p>
+          <div className="fe-dash-stars">☆☆☆☆☆</div>
+        </div>
+        <button type="button" className="fe-dash-edit-btn">
+          Edit
+        </button>
+      </div>
+      <div className="fe-dash-wallet">
+        <p className="fe-dash-wallet-label">Wallet</p>
+        <p className="fe-dash-wallet-amount">$0.00</p>
+        <a href="#transactions">View transaction history</a>
+      </div>
+    </div>
+  );
+}
+
+function ActivityFeed() {
+  return (
+    <div className="fe-dash-card fe-dash-activity">
+      <h3>Activity (Top 50)</h3>
+      <ul>
+        {activity.map((a, idx) => (
+          <li key={idx}>
+            <span className="fe-dash-activity-dot" />
+            <div>
+              <p className="fe-dash-activity-time">{a.time}</p>
+              <p className="fe-dash-activity-text">{a.text}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function Dashboard() {
+  return (
+    <div className="fe-dash-page">
+      <Sidebar />
+      <div className="fe-dash-main">
+        <TopBar />
+        <div className="fe-dash-content">
+          <div className="fe-dash-customize-row">
+            <a href="#customize">Customize Dashboard</a>
+          </div>
+          <OverviewBar />
+
+          <div className="fe-dash-grid">
+            <div className="fe-dash-panels-row">
+              <MarketplaceCard />
+              <UnpaidVisitsCard />
+              <JobMessagesCard />
             </div>
 
-            <div className="dashboard-page__outlook">
-              <div className="dashboard-page__outlook-header">
-                <h3>Your Job Outlook</h3>
-                <div className="dashboard-page__outlook-nav">
-                  <button aria-label="Previous month">‹</button>
-                  <span>{month}</span>
-                  <button aria-label="Next month">›</button>
-                </div>
-                <div className="dashboard-page__outlook-owner">
-                  <span>Job Owner</span>
-                  <span className="dashboard-page__outlook-owner-value">All ▾</span>
-                </div>
-              </div>
-
-              <div className="dashboard-page__chart">
-                {outlookWeeks.map((week) => (
-                  <div className="dashboard-page__chart-col" key={week.label}>
-                    <div
-                      className="dashboard-page__chart-bar"
-                      style={{ height: `${(week.value / maxValue) * 100}%` }}
-                    >
-                      <span>{week.value}</span>
-                    </div>
-                    <p>{week.label}</p>
-                  </div>
-                ))}
-              </div>
+            <div className="fe-dash-side-col">
+              <ProfileCard />
+              <ActivityFeed />
             </div>
           </div>
-
-          <aside className="dashboard-page__activity">
-            <h3>Activity (Top 50)</h3>
-            <ul>
-              {activity.map((item, i) => (
-                <li key={i}>
-                  <span className="dashboard-page__activity-dot"></span>
-                  <div>
-                    <p className="dashboard-page__activity-time">{item.time}</p>
-                    <p className="dashboard-page__activity-text">{item.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </aside>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
-};
-
-export default Dashboard;
+}
