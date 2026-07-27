@@ -6,7 +6,7 @@ import ContactUs from '../pages/ContactUs'
 import EngineerSignUp from '../pages/ApplyForJobs'
 import BusinessSignUp from '../pages/HireAnEngineer'
 import Marketplace from '../pages/Marketplace'
-import Dashboard from '../pages/Dashboard'
+
 
 const umarRoutes = [
   { path: '/contact', element: <ContactUs /> },
@@ -15,7 +15,7 @@ const umarRoutes = [
   { path: '/applyforjobs', element: <EngineerSignUp/> },
   { path: '/hireanengineer', element: <BusinessSignUp /> },
   { path: '/marketplace', element: <Marketplace /> },
-  { path: '/dashboard', element: <Dashboard /> },
+  
 
 ]
 
