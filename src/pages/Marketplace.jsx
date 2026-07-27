@@ -1,4 +1,10 @@
 import { useState } from "react";
+import {
+  ChevronDownIcon,
+  MoreVerticalIcon,
+  ChevronRightIcon,
+  CountryFlagIcon,
+} from "../components/icons";
 
 const tabs = [
   { label: "Marketplace", count: 1 },
@@ -14,7 +20,6 @@ const jobs = [
     id: "FTS62113",
     postedDate: "8 Mar 19..",
     workOrder: "W190307008643",
-    flag: "🇧🇪",
     city: "Brussels",
     country: "Brussels",
     tag: "ONSITE",
@@ -60,7 +65,9 @@ const Marketplace = () => {
 
             <div className="marketplace-page__owner">
               <span className="marketplace-page__owner-label">Job Owner</span>
-              <span className="marketplace-page__owner-name">Muhammad Chaudry ▾</span>
+              <span className="marketplace-page__owner-name">
+                Muhammad Chaudry <ChevronDownIcon size={14} />
+              </span>
             </div>
           </div>
         </div>
@@ -162,7 +169,10 @@ const Marketplace = () => {
                     </p>
                     <p className="marketplace-page__job-wo">{job.workOrder}</p>
                     <p className="marketplace-page__job-city">
-                      <span>{job.flag}</span> {job.city}
+                      <span>
+                        <CountryFlagIcon size={13} />
+                      </span>{" "}
+                      {job.city}
                     </p>
                     <p className="marketplace-page__job-country">{job.country}</p>
                     <span className="marketplace-page__job-tag">{job.tag}</span>
@@ -204,8 +214,12 @@ const Marketplace = () => {
                   </td>
 
                   <td className="marketplace-page__row-menu">
-                    <button aria-label="More actions">⋮</button>
-                    <button aria-label="Open job">›</button>
+                    <button aria-label="More actions">
+                      <MoreVerticalIcon size={16} />
+                    </button>
+                    <button aria-label="Open job">
+                      <ChevronRightIcon size={16} />
+                    </button>
                   </td>
                 </tr>
               ))}

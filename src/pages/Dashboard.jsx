@@ -1,16 +1,35 @@
 import React, { useState } from "react";
+import {
+  DashboardIcon,
+  MyJobsIcon,
+  MyProjectsIcon,
+  EngineerIcon,
+  MessagesIcon,
+  FundsIcon,
+  ReportingIcon,
+  TimeManagementIcon,
+  ManageUsersIcon,
+  CustomFieldIcon,
+  CreateJobIcon,
+  MenuIcon,
+  SearchIcon,
+  BellIcon,
+  InfoIcon,
+  DollarIcon,
+  StarIcon,
+} from "../components/icons";
 
 const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: "🏠" },
-  { key: "my-jobs", label: "My Jobs", icon: "📍" },
-  { key: "my-projects", label: "My Projects", icon: "🗂" },
-  { key: "engineer", label: "Engineer", icon: "👥" },
-  { key: "messages", label: "Messages", icon: "💬" },
-  { key: "funds", label: "Funds", icon: "💰", sub: "Wallet: $0.00" },
-  { key: "reporting", label: "Reporting", icon: "📊" },
-  { key: "time-management", label: "Time Management", icon: "⏱" },
-  { key: "manage-users", label: "Manage Users", icon: "🧑‍💼" },
-  { key: "custom-field", label: "Custom Field", icon: "📋" },
+  { key: "dashboard", label: "Dashboard", icon: DashboardIcon },
+  { key: "my-jobs", label: "My Jobs", icon: MyJobsIcon },
+  { key: "my-projects", label: "My Projects", icon: MyProjectsIcon },
+  { key: "engineer", label: "Engineer", icon: EngineerIcon },
+  { key: "messages", label: "Messages", icon: MessagesIcon },
+  { key: "funds", label: "Funds", icon: FundsIcon, sub: "Wallet: $0.00" },
+  { key: "reporting", label: "Reporting", icon: ReportingIcon },
+  { key: "time-management", label: "Time Management", icon: TimeManagementIcon },
+  { key: "manage-users", label: "Manage Users", icon: ManageUsersIcon },
+  { key: "custom-field", label: "Custom Field", icon: CustomFieldIcon },
 ];
 
 const activity = [
@@ -43,12 +62,12 @@ function Sidebar() {
           <span>FIELD ENGINEER</span>
         </div>
         <button type="button" className="fe-dash-hamburger" aria-label="Menu">
-          &#9776;
+          <MenuIcon size={18} />
         </button>
       </div>
 
       <button type="button" className="fe-dash-create-job">
-        <span className="fe-plus">+</span> Create Job
+        <span className="fe-plus"><CreateJobIcon size={14} /></span> Create Job
       </button>
 
       <nav className="fe-dash-nav">
@@ -62,7 +81,9 @@ function Sidebar() {
                 }`}
                 onClick={() => setActive(item.key)}
               >
-                <span className="fe-dash-nav-icon">{item.icon}</span>
+                <span className="fe-dash-nav-icon">
+                  <item.icon size={16} />
+                </span>
                 <span className="fe-dash-nav-label">
                   {item.label}
                   {item.sub && (
@@ -96,7 +117,9 @@ function TopBar() {
   return (
     <div className="fe-dash-topbar">
       <div className="fe-dash-search">
-        <span className="fe-dash-search-icon">&#128269;</span>
+        <span className="fe-dash-search-icon">
+          <SearchIcon size={14} />
+        </span>
         <input type="text" placeholder="Search" />
       </div>
       <button
@@ -104,7 +127,7 @@ function TopBar() {
         className="fe-dash-bell"
         aria-label="Notifications"
       >
-        &#128276;
+        <BellIcon size={18} />
         <span className="fe-dash-bell-badge">4</span>
       </button>
     </div>
@@ -132,7 +155,9 @@ function MarketplaceCard() {
   return (
     <div className="fe-dash-card fe-dash-panel">
       <div className="fe-dash-panel-header">
-        <span className="fe-dash-panel-icon">&#9432;</span>
+        <span className="fe-dash-panel-icon">
+          <InfoIcon size={14} />
+        </span>
         <h3>Marketplace Job(s)</h3>
       </div>
       <ul className="fe-dash-stat-list">
@@ -168,7 +193,9 @@ function UnpaidVisitsCard() {
   return (
     <div className="fe-dash-card fe-dash-panel">
       <div className="fe-dash-panel-header">
-        <span className="fe-dash-panel-icon">&#36;</span>
+        <span className="fe-dash-panel-icon">
+          <DollarIcon size={14} />
+        </span>
         <h3>Unpaid Visits</h3>
       </div>
       <ul className="fe-dash-stat-list">
@@ -198,7 +225,9 @@ function JobMessagesCard() {
   return (
     <div className="fe-dash-card fe-dash-panel">
       <div className="fe-dash-panel-header">
-        <span className="fe-dash-panel-icon">&#9432;</span>
+        <span className="fe-dash-panel-icon">
+          <InfoIcon size={14} />
+        </span>
         <h3>Job Messages</h3>
       </div>
       <p className="fe-dash-messages-empty">You have 0 unread messages.</p>
@@ -219,7 +248,11 @@ function ProfileCard() {
         <div>
           <p className="fe-dash-profile-name">Muhammad Chaudry</p>
           <p className="fe-dash-profile-company">FingTap Solutions</p>
-          <div className="fe-dash-stars">☆☆☆☆☆</div>
+          <div className="fe-dash-stars">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <StarIcon key={i} size={13} />
+            ))}
+          </div>
         </div>
         <button type="button" className="fe-dash-edit-btn">
           Edit

@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "../components/icons";
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTH_NAMES = [
@@ -99,7 +100,7 @@ export default function JobOutlook() {
               aria-label="Previous month"
               onClick={goToPrevMonth}
             >
-              &#8249;
+              <ChevronLeftIcon size={16} />
             </button>
             <span className="job-outlook-month-label">
               {MONTH_NAMES[month]} - {year}
@@ -110,7 +111,7 @@ export default function JobOutlook() {
               aria-label="Next month"
               onClick={goToNextMonth}
             >
-              &#8250;
+              <ChevronRightIcon size={16} />
             </button>
           </div>
 
