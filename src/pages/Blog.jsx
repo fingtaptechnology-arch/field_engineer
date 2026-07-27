@@ -124,7 +124,7 @@ const Blog = () => {
 
           <aside className="blog-page__popular">
             <h4>Popular Posts</h4>
-            <a href="#" className="blog-card blog-card--popular">
+            <a href={popularPost.href} className="blog-card blog-card--popular">
               <div className="blog-card__image">
                 <img src={popularPost.image} alt={popularPost.title} />
               </div>

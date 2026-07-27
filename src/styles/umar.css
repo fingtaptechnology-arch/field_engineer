@@ -137,19 +137,6 @@
   font-size: 1.2rem;
 }
 
-.see-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  color: #0d6efd;
-  font-weight: 600;
-  font-size: 0.88rem;
-}
-
-.see-more:hover {
-  text-decoration: underline;
-}
-
 @media (max-width: 800px) {
   .contact-us__top {
     margin-top: 20px;
@@ -546,5 +533,564 @@
 @media (max-width: 600px) {
   .blog-page__grid {
     grid-template-columns: 1fr;
+  }
+}
+/* ==========================================================================
+   Blog post page
+   ========================================================================== */
+.blog-post__container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+.blog-post__back {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #0d6efd;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.blog-post__back:hover {
+  text-decoration: underline;
+}
+
+.blog-post__category {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0d6efd;
+  text-transform: uppercase;
+}
+
+.blog-post__title {
+  margin: 8px 0 12px;
+  line-height: 1.3;
+}
+
+.blog-post__meta {
+  color: #888;
+  font-size: 0.9rem;
+  margin: 0 0 24px;
+}
+
+.blog-post__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #eee;
+  margin-bottom: 28px;
+}
+
+.blog-post__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-post__content p {
+  line-height: 1.7;
+  margin: 0 0 18px;
+  color: #333;
+}
+
+/* ==========================================================================
+   Marketplace page (job listing + map)
+   ========================================================================== */
+.marketplace-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 32px 60px;
+}
+
+.marketplace-page__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.marketplace-page__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f4f6f8;
+  border: 1px solid #e2e2e2;
+  border-radius: 6px;
+  padding: 8px 14px;
+  flex: 1 1 260px;
+  max-width: 420px;
+}
+
+.marketplace-page__search input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+.marketplace-page__toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.marketplace-page__bell {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 6px;
+  display: flex;
+}
+
+.marketplace-page__bell-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e5484d;
+}
+
+.marketplace-page__owner {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.marketplace-page__owner-label {
+  font-size: 0.7rem;
+  color: #999;
+}
+
+.marketplace-page__owner-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.marketplace-page__tabs {
+  display: flex;
+  gap: 26px;
+  border-bottom: 1px solid #e6e6e6;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.marketplace-page__tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 2px;
+  font-size: 0.88rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.marketplace-page__tab--active {
+  color: #0d6efd;
+  font-weight: 700;
+  border-bottom-color: #0d6efd;
+}
+
+.marketplace-page__tab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2fbf71;
+  display: inline-block;
+}
+
+.marketplace-page__tab-count {
+  background: #eef2f6;
+  color: #666;
+  font-size: 0.72rem;
+  border-radius: 10px;
+  padding: 1px 7px;
+}
+
+.marketplace-page__map {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e2e2e2;
+  margin-bottom: 16px;
+}
+
+.marketplace-page__map svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.marketplace-page__filter-row {
+  margin-bottom: 12px;
+}
+
+.marketplace-page__filter-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 8px 10px;
+  display: inline-flex;
+}
+
+.marketplace-page__table-wrap {
+  overflow-x: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.marketplace-page__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 900px;
+}
+
+.marketplace-page__table thead th {
+  text-align: left;
+  background: #f7f8fa;
+  color: #888;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.marketplace-page__table td {
+  vertical-align: top;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.marketplace-page__job-id {
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: #1a1a1a;
+}
+
+.marketplace-page__job-wo,
+.marketplace-page__job-country {
+  margin: 0 0 4px;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+.marketplace-page__job-city {
+  margin: 0 0 2px;
+  font-weight: 600;
+}
+
+.marketplace-page__job-tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #555;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.marketplace-page__status {
+  margin: 0 0 2px;
+  color: #d97706;
+  font-weight: 600;
+}
+
+.marketplace-page__overdue {
+  margin: 6px 0 0;
+  color: #999;
+  font-size: 0.78rem;
+}
+
+.marketplace-page__payout-total {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.marketplace-page__payout-sub {
+  margin: 0 0 2px;
+  color: #888;
+}
+
+.marketplace-page__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.marketplace-page__timeline li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.marketplace-page__timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ddd;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.marketplace-page__timeline-dot--done {
+  background: #f0ad4e;
+}
+
+.marketplace-page__timeline-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.8rem;
+}
+
+.marketplace-page__timeline-text strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.marketplace-page__timeline-text em {
+  font-style: normal;
+  color: #888;
+}
+
+.marketplace-page__applicants {
+  margin: 0 0 4px;
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.marketplace-page__counters {
+  margin: 0;
+  color: #0d6efd;
+}
+
+.marketplace-page__row-menu {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.marketplace-page__row-menu button {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 700px) {
+  .marketplace-page {
+    padding: 16px 16px 40px;
+  }
+
+  .marketplace-page__map {
+    height: 220px;
+  }
+}
+
+
+/* ==========================================================================
+   Dashboard page (activity + job outlook)
+   ========================================================================== */
+.dashboard-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 28px 32px 60px;
+}
+
+.dashboard-page__grid {
+  display: grid;
+  grid-template-columns: 2.2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.dashboard-page__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dashboard-page__stat-card {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 18px 16px;
+  background: #fff;
+}
+
+.dashboard-page__stat-value {
+  margin: 0 0 4px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #14314f;
+}
+
+.dashboard-page__stat-label {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.dashboard-page__outlook {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.dashboard-page__outlook-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dashboard-page__outlook-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.dashboard-page__outlook-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.dashboard-page__outlook-nav button {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 26px;
+  height: 26px;
+  color: #666;
+}
+
+.dashboard-page__outlook-owner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #888;
+}
+
+.dashboard-page__outlook-owner-value {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.dashboard-page__chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  height: 180px;
+  padding: 0 10px;
+}
+
+.dashboard-page__chart-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.dashboard-page__chart-bar {
+  width: 100%;
+  max-width: 56px;
+  background: #0d6efd;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 18px;
+}
+
+.dashboard-page__chart-bar span {
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.dashboard-page__chart-col p {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.dashboard-page__activity {
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.dashboard-page__activity h3 {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.dashboard-page__activity ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 380px;
+  overflow-y: auto;
+}
+
+.dashboard-page__activity li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.dashboard-page__activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #0d6efd;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.dashboard-page__activity-time {
+  margin: 0 0 2px;
+  font-size: 0.78rem;
+  color: #999;
+}
+
+.dashboard-page__activity-text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+@media (max-width: 900px) {
+  .dashboard-page__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-page__stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

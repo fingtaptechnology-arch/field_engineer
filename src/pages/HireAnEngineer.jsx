@@ -1,5 +1,3 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 const stats = [
   { value: "200+", label: "Countries", sublabel: "Global Presence" },
@@ -10,7 +8,6 @@ const stats = [
 const BusinessSignUp = () => {
   return (
     <>
-      <Header />
 
       <section className="auth-page">
         <div className="auth-page__topbar">
@@ -81,7 +78,6 @@ const BusinessSignUp = () => {
         </div>
       </section>
 
-      <Footer />
     </>
   );
 };
