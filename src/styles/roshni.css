@@ -1116,3 +1116,689 @@
   flex-direction: row;
   justify-content: center;
 }
+
+/* =============================================================
+   Dashboard app shell (sidebar + topbar)
+   Shared chrome used by internal app pages such as Manage Users.
+   Reference: amna.css design tokens
+   ============================================================= */
+.fe-dash-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f5f7;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto,
+    Helvetica, Arial, sans-serif;
+  color: #333333;
+}
+
+/* ---------- Sidebar ---------- */
+.fe-dash-sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  background: #ffffff;
+  border-right: 1px solid #e7e8ec;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px;
+}
+
+.fe-dash-sidebar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.fe-dash-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: #16305c;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.fe-dash-logo span {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #16305c;
+  margin-top: 2px;
+}
+
+.fe-dash-hamburger {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #16305c;
+  cursor: pointer;
+}
+
+.fe-dash-create-job {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px dashed #9aa3b2;
+  border-radius: 6px;
+  color: #16305c;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 10px;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.fe-plus {
+  font-size: 15px;
+}
+
+.fe-dash-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.fe-dash-nav-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 10px;
+  margin-bottom: 2px;
+  font-size: 13px;
+  color: #55596b;
+  cursor: pointer;
+  text-align: left;
+}
+
+.fe-dash-nav-btn.is-active {
+  background: #16305c;
+  color: #ffffff;
+}
+
+.fe-dash-nav-icon {
+  font-size: 14px;
+  width: 18px;
+  text-align: center;
+}
+
+.fe-dash-nav-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.fe-dash-nav-sub {
+  font-size: 11px;
+  color: #2e9e5b;
+  font-weight: 600;
+}
+
+.fe-dash-nav-btn.is-active .fe-dash-nav-sub {
+  color: #b7e6c9;
+}
+
+.fe-dash-sidebar-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #eceef2;
+}
+
+.fe-dash-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #16305c;
+  cursor: pointer;
+  padding: 0;
+}
+
+.fe-dash-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #c9ced9;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.fe-dash-sidebar-bottom a {
+  font-size: 13px;
+  color: #55596b;
+  text-decoration: none;
+}
+
+.fe-dash-sidebar-bottom a:hover {
+  text-decoration: underline;
+}
+
+.fe-dash-help-btn {
+  margin-top: 8px;
+  background: #16305c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ---------- Main / topbar ---------- */
+.fe-dash-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fe-dash-topbar {
+  background: linear-gradient(90deg, #1b3a63 0%, #3c6a93 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+}
+
+.fe-dash-search {
+  flex: 1;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.fe-dash-search input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+.fe-dash-search input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.fe-dash-search-icon {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+}
+
+.fe-dash-bell {
+  position: relative;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.fe-dash-bell-badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #d0342c;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Content ---------- */
+.fe-dash-content {
+  padding: 20px 24px 40px;
+}
+
+
+/* =============================================================
+   Manage Users page
+   ============================================================= */
+.manage-users {
+  max-width: 1100px;
+}
+
+.manage-users__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.manage-users__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.manage-users__back-btn {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  border-radius: 50%;
+  border: 1px solid #cfd4dd;
+  background: #ffffff;
+  color: #16305c;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manage-users__back-btn:hover {
+  background: #f0f2f6;
+}
+
+.manage-users__title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #16305c;
+}
+
+.manage-users__subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.manage-users__create-btn {
+  flex-shrink: 0;
+  background: #2f6fdb;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.manage-users__create-btn:hover {
+  background: #255bbd;
+}
+
+.manage-users__tabs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  border-bottom: 1px solid #e5e7ee;
+  margin-bottom: 24px;
+}
+
+.manage-users__tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.manage-users__tab.is-active {
+  color: #16305c;
+  border-bottom-color: #5b4fe0;
+}
+
+.manage-users__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 340px));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.manage-users__empty {
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.manage-users__card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: linear-gradient(135deg, #1b3a63 0%, #16305c 100%);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.manage-users__avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.manage-users__avatar {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #d8dce4;
+}
+
+.manage-users__avatar-id {
+  position: absolute;
+  left: -4px;
+  bottom: -6px;
+  background: #16305c;
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.manage-users__card-info {
+  min-width: 0;
+}
+
+.manage-users__card-name {
+  margin: 0 0 2px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.manage-users__card-company {
+  margin: 0 0 4px;
+  color: #c3cde0;
+  font-size: 12px;
+}
+
+.manage-users__card-status {
+  margin: 0;
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.manage-users__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.manage-users__pagination-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.manage-users__pagination-select {
+  border: 1px solid #d8dce4;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #16305c;
+  background: #ffffff;
+}
+
+.manage-users__pagination-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #d8dce4;
+  background: #ffffff;
+  color: #16305c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.manage-users__pagination-btn:disabled {
+  color: #b5bac5;
+  cursor: not-allowed;
+}
+
+/* =============================================================
+   Time Management page
+   ============================================================= */
+.time-mgmt {
+  max-width: 1200px;
+}
+
+.time-mgmt__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.time-mgmt__title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.time-mgmt__back-btn {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  border-radius: 50%;
+  border: 1px solid #cfd4dd;
+  background: #ffffff;
+  color: #16305c;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-mgmt__back-btn:hover {
+  background: #f0f2f6;
+}
+
+.time-mgmt__title {
+  margin: 0 0 4px;
+  font-size: 22px;
+  font-weight: 800;
+  color: #16305c;
+}
+
+.time-mgmt__subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+  max-width: 520px;
+}
+
+.time-mgmt__wallet-card {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7ee;
+  border-radius: 8px;
+  padding: 14px 20px;
+}
+
+.time-mgmt__wallet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.time-mgmt__wallet-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.time-mgmt__wallet-amount {
+  font-size: 20px;
+  font-weight: 800;
+  color: #16305c;
+}
+
+.time-mgmt__add-funds-btn {
+  background: #16305c;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.time-mgmt__add-funds-btn:hover {
+  background: #0f223f;
+}
+
+.time-mgmt__filter-bar {
+  margin-bottom: 18px;
+}
+
+.time-mgmt__filter-btn {
+  width: 38px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid #e5e7ee;
+  background: #f4f5f7;
+  color: #16305c;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-mgmt__filter-btn:hover {
+  background: #e9ebef;
+}
+
+.time-mgmt__tabs-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid #e5e7ee;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.time-mgmt__tabs {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.time-mgmt__tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0 0 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.time-mgmt__tab.is-active {
+  color: #16305c;
+  border-bottom-color: #5b4fe0;
+}
+
+.time-mgmt__job-owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.time-mgmt__job-owner-label {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.time-mgmt__job-owner-select {
+  border: 1px solid #d8dce4;
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #16305c;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.time-mgmt__table-wrap {
+  margin-top: 18px;
+  overflow-x: auto;
+  border-radius: 8px;
+}
+
+.time-mgmt__table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.time-mgmt__table thead th {
+  text-align: left;
+  background: #f4f5f7;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7ee;
+  white-space: nowrap;
+}
+
+.time-mgmt__table tbody td {
+  padding: 14px 16px;
+  font-size: 13px;
+  color: #333333;
+  border-bottom: 1px solid #f0f1f4;
+}
+
+.time-mgmt__table-empty {
+  text-align: center;
+  color: #9aa0ac;
+  padding: 40px 16px;
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .time-mgmt__header {
+    flex-direction: column;
+  }
+
+  .time-mgmt__wallet-card {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
