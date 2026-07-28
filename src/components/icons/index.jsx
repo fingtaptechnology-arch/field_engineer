@@ -34,6 +34,9 @@ import {
   MoreVertical,
   Flag,
   Plus,
+  Check,
+  SlidersHorizontal,
+  PlusCircle,
 } from "lucide-react";
 
 // Sidebar nav
@@ -67,3 +70,6 @@ export const MoreVerticalIcon = MoreVertical;
 
 // Misc
 export const CountryFlagIcon = Flag;
+export const CheckIcon = Check;
+export const FilterIcon = SlidersHorizontal;
+export const PlusCircleIcon = PlusCircle;

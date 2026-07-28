@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   DashboardIcon,
   MyJobsIcon,
@@ -18,6 +19,15 @@ import {
   DollarIcon,
   StarIcon,
 } from "../components/icons";
+
+// key -> route path, for the sidebar items that already have a page
+const navRoutes = {
+  dashboard: "/dashboard",
+  messages: "/messages",
+  funds: "/funds",
+  reporting: "/reporting",
+
+};
 
 const navItems = [
   { key: "dashboard", label: "Dashboard", icon: DashboardIcon },
@@ -52,7 +62,14 @@ const activity = [
 ];
 
 function Sidebar() {
+  const navigate = useNavigate();
   const [active, setActive] = useState("dashboard");
+
+  const handleClick = (item) => {
+    setActive(item.key);
+    const path = navRoutes[item.key];
+    if (path) navigate(path);
+  };
 
   return (
     <aside className="fe-dash-sidebar">
@@ -79,7 +96,7 @@ function Sidebar() {
                 className={`fe-dash-nav-btn ${
                   active === item.key ? "is-active" : ""
                 }`}
-                onClick={() => setActive(item.key)}
+                onClick={() => handleClick(item)}
               >
                 <span className="fe-dash-nav-icon">
                   <item.icon size={16} />
@@ -241,6 +258,8 @@ function JobMessagesCard() {
 }
 
 function ProfileCard() {
+  const navigate = useNavigate();
+
   return (
     <div className="fe-dash-card fe-dash-profile">
       <div className="fe-dash-profile-top">
@@ -261,7 +280,15 @@ function ProfileCard() {
       <div className="fe-dash-wallet">
         <p className="fe-dash-wallet-label">Wallet</p>
         <p className="fe-dash-wallet-amount">$0.00</p>
-        <a href="#transactions">View transaction history</a>
+        <a
+          href="#transactions"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/funds");
+          }}
+        >
+          View transaction history
+        </a>
       </div>
     </div>
   );
