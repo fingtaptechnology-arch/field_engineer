@@ -15,7 +15,7 @@ const allRoutes = [...amnaRoutes, ...umarRoutes, ...roshniRoutes]
 
 // Routes that render their own full-screen app shell (sidebar/topbar)
 // and should not be wrapped by the marketing site Header/Footer.
-const APP_SHELL_PATHS = ['/manage-users']
+const APP_SHELL_PATHS = ['/manage-users', '/time-management']
 
 function AppLayout() {
   const location = useLocation()
