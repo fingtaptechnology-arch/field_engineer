@@ -2,15 +2,15 @@ const companyLinks = [
   { label: "Blog", href: "/blogs" },
   { label: "Help", href: "/help" },
   { label: "Skills", href: "/skills" },
-  { label: "About Us", href: "/about" },
+  { label: "About Us", href: "/about-us" },
   { label: "Contact", href: "/contact" },
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms & conditions", href: "/legal" },
 ];
 
 const getStartedLinks = [
-  { label: "Hire an Engineer", href: "/business-signup" },
-  { label: "Apply for Jobs", href: "/engineer-signup" },
+  { label: "Hire an Engineer", href: "/hireanengineer" },
+  { label: "Apply for Jobs", href: "/applyforjobs" },
 ];
 
 const howItWorksLinks = [

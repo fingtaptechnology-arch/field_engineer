@@ -30,9 +30,9 @@ const Header = () => {
           <div className="header__signup">
             <span className="header__signup-label">SIGNUP</span>
             <div className="header__signup-btns">
-              <Link to="/business-signup">Hire an Engineer</Link>
+              <Link to="/hireanengineer">Hire an Engineer</Link>
               <span className="header__signup-divider"></span>
-              <Link to="/engineer-signup">Apply for Jobs</Link>
+              <Link to="/applyforjobs">Apply for Jobs</Link>
             </div>
           </div>
           <a href="https://app.fieldengineer.com/login" className="header__login">
