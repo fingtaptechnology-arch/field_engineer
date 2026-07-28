@@ -1,17 +1,167 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { Sidebar, TopBar } from "../components/FeDashboardShell";
 
-const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: "🏠" },
-  { key: "my-jobs", label: "My Jobs", icon: "📍" },
-  { key: "my-projects", label: "My Projects", icon: "🗂" },
-  { key: "engineer", label: "Engineer", icon: "👥" },
-  { key: "messages", label: "Messages", icon: "💬" },
-  { key: "funds", label: "Funds", icon: "💰", sub: "Wallet: $0.00" },
-  { key: "reporting", label: "Reporting", icon: "📊" },
-  { key: "time-management", label: "Time Management", icon: "⏱" },
-  { key: "manage-users", label: "Manage Users", icon: "🧑‍💼" },
-  { key: "custom-field", label: "Custom Field", icon: "📋" },
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
 ];
+
+// Highlighted job date (matches the reference design: Fri, 24 July 2026)
+const HIGHLIGHTED_DATE = { year: 2026, month: 6, day: 24 };
+
+function buildCalendarMatrix(year, month) {
+  const firstDayOfMonth = new Date(year, month, 1);
+  const startWeekday = firstDayOfMonth.getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const daysInPrevMonth = new Date(year, month, 0).getDate();
+
+  const cells = [];
+
+  // Leading days from previous month
+  for (let i = startWeekday - 1; i >= 0; i--) {
+    cells.push({
+      day: daysInPrevMonth - i,
+      currentMonth: false,
+      year: month === 0 ? year - 1 : year,
+      month: month === 0 ? 11 : month - 1,
+    });
+  }
+
+  // Days of current month
+  for (let d = 1; d <= daysInMonth; d++) {
+    cells.push({ day: d, currentMonth: true, year, month });
+  }
+
+  // Trailing days from next month to complete the last week row
+  while (cells.length % 7 !== 0) {
+    const nextIndex = cells.length - (startWeekday + daysInMonth) + 1;
+    cells.push({
+      day: nextIndex,
+      currentMonth: false,
+      year: month === 11 ? year + 1 : year,
+      month: month === 11 ? 0 : month + 1,
+    });
+  }
+
+  const weeks = [];
+  for (let i = 0; i < cells.length; i += 7) {
+    weeks.push(cells.slice(i, i + 7));
+  }
+  return weeks;
+}
+
+function JobOutlookCalendar() {
+  const [viewDate, setViewDate] = useState(
+    new Date(HIGHLIGHTED_DATE.year, HIGHLIGHTED_DATE.month, 1)
+  );
+  const [jobOwner, setJobOwner] = useState("All");
+
+  const year = viewDate.getFullYear();
+  const month = viewDate.getMonth();
+
+  const weeks = useMemo(() => buildCalendarMatrix(year, month), [year, month]);
+
+  const goToPrevMonth = () => {
+    setViewDate(new Date(year, month - 1, 1));
+  };
+
+  const goToNextMonth = () => {
+    setViewDate(new Date(year, month + 1, 1));
+  };
+
+  const isHighlighted = (cell) =>
+    cell.currentMonth &&
+    cell.year === HIGHLIGHTED_DATE.year &&
+    cell.month === HIGHLIGHTED_DATE.month &&
+    cell.day === HIGHLIGHTED_DATE.day;
+
+  return (
+    <div className="job-outlook-card">
+      {/* Toolbar */}
+      <div className="job-outlook-toolbar">
+        <div className="job-outlook-title">Your Job Outlook</div>
+
+        <div className="job-outlook-month-nav">
+          <button
+            type="button"
+            className="job-outlook-nav-btn"
+            aria-label="Previous month"
+            onClick={goToPrevMonth}
+          >
+            &#8249;
+          </button>
+          <span className="job-outlook-month-label">
+            {MONTH_NAMES[month]} - {year}
+          </span>
+          <button
+            type="button"
+            className="job-outlook-nav-btn"
+            aria-label="Next month"
+            onClick={goToNextMonth}
+          >
+            &#8250;
+          </button>
+        </div>
+
+        <div className="job-outlook-owner">
+          <label htmlFor="job-owner-select">Job Owner</label>
+          <select
+            id="job-owner-select"
+            className="job-outlook-owner-select"
+            value={jobOwner}
+            onChange={(e) => setJobOwner(e.target.value)}
+          >
+            <option value="All">All</option>
+            <option value="Me">Me</option>
+            <option value="Team">Team</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Weekday header */}
+      <div className="job-outlook-weekdays">
+        {WEEKDAYS.map((wd) => (
+          <div key={wd} className="job-outlook-weekday-cell">
+            {wd}
+          </div>
+        ))}
+      </div>
+
+      {/* Calendar grid */}
+      <div className="job-outlook-grid">
+        {weeks.map((week, wIdx) => (
+          <div className="job-outlook-week-row" key={wIdx}>
+            {week.map((cell, cIdx) => (
+              <div
+                key={cIdx}
+                className={[
+                  "job-outlook-day-cell",
+                  !cell.currentMonth ? "is-muted" : "",
+                  isHighlighted(cell) ? "is-highlighted" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
+              >
+                <span className="job-outlook-day-number">{cell.day}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const activity = [
   {
@@ -31,85 +181,6 @@ const activity = [
     text: "A visit was marked complete for Job #A28190",
   },
 ];
-
-function Sidebar() {
-  const [active, setActive] = useState("dashboard");
-
-  return (
-    <aside className="fe-dash-sidebar">
-      <div className="fe-dash-sidebar-top">
-        <div className="fe-dash-logo">
-          FE
-          <span>FIELD ENGINEER</span>
-        </div>
-        <button type="button" className="fe-dash-hamburger" aria-label="Menu">
-          &#9776;
-        </button>
-      </div>
-
-      <button type="button" className="fe-dash-create-job">
-        <span className="fe-plus">+</span> Create Job
-      </button>
-
-      <nav className="fe-dash-nav">
-        <ul>
-          {navItems.map((item) => (
-            <li key={item.key}>
-              <button
-                type="button"
-                className={`fe-dash-nav-btn ${
-                  active === item.key ? "is-active" : ""
-                }`}
-                onClick={() => setActive(item.key)}
-              >
-                <span className="fe-dash-nav-icon">{item.icon}</span>
-                <span className="fe-dash-nav-label">
-                  {item.label}
-                  {item.sub && (
-                    <span className="fe-dash-nav-sub">{item.sub}</span>
-                  )}
-                </span>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
-      <div className="fe-dash-sidebar-bottom">
-        <button type="button" className="fe-dash-user">
-          <span className="fe-dash-avatar" />
-          Muhammad Chaudry
-        </button>
-        <a href="#feedback">Feedback</a>
-        <a href="#release-notes">Release Notes</a>
-        <a href="#settings">Settings</a>
-        <a href="#signout">Sign Out</a>
-        <button type="button" className="fe-dash-help-btn">
-          Need help?
-        </button>
-      </div>
-    </aside>
-  );
-}
-
-function TopBar() {
-  return (
-    <div className="fe-dash-topbar">
-      <div className="fe-dash-search">
-        <span className="fe-dash-search-icon">&#128269;</span>
-        <input type="text" placeholder="Search" />
-      </div>
-      <button
-        type="button"
-        className="fe-dash-bell"
-        aria-label="Notifications"
-      >
-        &#128276;
-        <span className="fe-dash-bell-badge">4</span>
-      </button>
-    </div>
-  );
-}
 
 function OverviewBar() {
   return (
@@ -276,6 +347,10 @@ export default function Dashboard() {
               <ProfileCard />
               <ActivityFeed />
             </div>
+          </div>
+
+          <div className="fe-dash-job-outlook">
+            <JobOutlookCalendar />
           </div>
         </div>
       </div>
