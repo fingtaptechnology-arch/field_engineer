@@ -1,17 +1,61 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
+// `path` is set only for pages that actually exist and are routed in
+// src/routes. Items without a `path` render as disabled buttons with a
+// "Coming soon" label instead of a dead link.
+//
+// For pages that aren't built yet, the intended route is left as a
+// commented-out `path` below. Once the page/route exists, just uncomment
+// the `path` line for that item and it will automatically turn into a
+// working link (no other changes needed).
 export const navItems = [
   { key: "dashboard", label: "Dashboard", icon: "🏠", path: "/dashboard" },
-  { key: "my-jobs", label: "My Jobs", icon: "📍" },
+  {
+    key: "my-jobs",
+    label: "My Jobs",
+    icon: "📍",
+    // path: "/my-jobs",
+  },
   { key: "my-projects", label: "My Projects", icon: "🗂", path: "/my-projects" },
   { key: "engineer", label: "Engineer", icon: "👥", path: "/engineer" },
-  { key: "messages", label: "Messages", icon: "💬" },
-  { key: "funds", label: "Funds", icon: "💰", sub: "Wallet: $0.00" },
-  { key: "reporting", label: "Reporting", icon: "📊" },
-  { key: "time-management", label: "Time Management", icon: "⏱" },
-  { key: "manage-users", label: "Manage Users", icon: "🧑‍💼" },
-  { key: "custom-field", label: "Custom Field", icon: "📋" },
+  {
+    key: "messages",
+    label: "Messages",
+    icon: "💬",
+    // path: "/messages",
+  },
+  {
+    key: "funds",
+    label: "Funds",
+    icon: "💰",
+    sub: "Wallet: $0.00",
+    // path: "/funds",
+  },
+  {
+    key: "reporting",
+    label: "Reporting",
+    icon: "📊",
+    // path: "/reporting",
+  },
+  {
+    key: "time-management",
+    label: "Time Management",
+    icon: "⏱",
+    // path: "/time-management",
+  },
+  {
+    key: "manage-users",
+    label: "Manage Users",
+    icon: "🧑‍💼",
+    // path: "/manage-users",
+  },
+  {
+    key: "custom-field",
+    label: "Custom Field",
+    icon: "📋",
+    // path: "/custom-field",
+  },
 ];
 
 export function Sidebar() {
@@ -48,6 +92,9 @@ export function Sidebar() {
                   {item.sub && (
                     <span className="fe-dash-nav-sub">{item.sub}</span>
                   )}
+                  {!item.path && (
+                    <span className="fe-dash-nav-soon">Coming soon</span>
+                  )}
                 </span>
               </>
             );
@@ -62,7 +109,12 @@ export function Sidebar() {
                     {content}
                   </Link>
                 ) : (
-                  <button type="button" className="fe-dash-nav-btn">
+                  <button
+                    type="button"
+                    className="fe-dash-nav-btn is-disabled"
+                    disabled
+                    title="Coming soon"
+                  >
                     {content}
                   </button>
                 )}

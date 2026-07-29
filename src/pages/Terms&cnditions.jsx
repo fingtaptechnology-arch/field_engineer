@@ -86,106 +86,6 @@ const items = [
   "Our Relationship with Providers",
 ];
 
-function Header() {
-  return (
-    <header className="fe-header">
-      <div className="fe-header-top">
-        <div className="fe-header-top-inner">
-          <span className="fe-signup-label">SIGN UP</span>
-        </div>
-      </div>
-      <div className="fe-header-main">
-        <Link to="/" className="fe-header-logo">
-          FE
-        </Link>
-        <nav className="fe-header-nav">
-          <a href="#how-it-works">How It Works</a>
-          <a href="#find-jobs">Find Engineering Jobs</a>
-          <a href="#blog">Blog</a>
-        </nav>
-        <div className="fe-header-actions">
-          <a href="#hire" className="fe-outline-btn">
-            Hire an Engineer
-          </a>
-          <a href="#apply" className="fe-outline-btn">
-            Apply for Jobs
-          </a>
-          <a href="#login">Log in</a>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer className="fe-footer">
-      <div className="fe-footer-main">
-        <div className="fe-footer-brand">
-          <div className="fe-footer-logo">FE</div>
-          <p>
-            77 Water Street,
-            <br />
-            Suite 7000
-            <br />
-            New York, NY 10005 USA
-          </p>
-          <p>&copy; 2026 Field Engineer</p>
-          <div className="fe-footer-social">
-            <a href="#facebook" aria-label="Facebook">
-              f
-            </a>
-            <a href="#twitter" aria-label="Twitter">
-              t
-            </a>
-            <a href="#linkedin" aria-label="LinkedIn">
-              in
-            </a>
-          </div>
-        </div>
-
-        <div className="fe-footer-col">
-          <a href="#blog">Blog</a>
-          <a href="#help">Help</a>
-          <a href="#skills">Skills</a>
-          <a href="#about">About Us</a>
-          <a href="#contact">Contact</a>
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms &amp; conditions</a>
-        </div>
-
-        <div className="fe-footer-col">
-          <a href="#hire">Hire an Engineer</a>
-          <a href="#jobs">Apply for Jobs</a>
-          <span className="fe-footer-divider" />
-          <a href="#how-engineers">How It Works: Engineers</a>
-          <a href="#how-business">How It Works: Businesses</a>
-        </div>
-
-        <div className="fe-footer-apps">
-          <span className="fe-footer-apps-label">Download the App!</span>
-          <a href="#appstore" className="fe-store-badge">
-            App Store
-          </a>
-          <a href="#googleplay" className="fe-store-badge">
-            Google Play
-          </a>
-        </div>
-      </div>
-
-      <div className="fe-footer-bottom">
-        <p>
-          Our website uses cookies to make your browsing experience better.
-          By using our website you agree to our use of cookies. Learn More.
-        </p>
-        <button type="button" className="fe-accept-btn">
-          Accept
-        </button>
-      </div>
-    </footer>
-  );
-}
-
 function AccordionRow({ label }) {
   const [open, setOpen] = useState(false);
 
@@ -216,7 +116,7 @@ export default function TermsConditions() {
 
   return (
     <div className="fe-page">
-      <Header />
+      
 
       <div className="fe-terms-hero">
         <h1>Terms &amp; Conditions</h1>
@@ -259,7 +159,6 @@ export default function TermsConditions() {
         </main>
       </div>
 
-      <Footer />
     </div>
   );
 }
