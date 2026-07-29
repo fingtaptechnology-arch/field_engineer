@@ -5,7 +5,7 @@ import Dashboard from '../pages/Dashboard'
 
 import TermsConditions from '../pages/Terms&cnditions'
 import MyProjects from '../pages/MyProjects'
-import Engineer from '../pages/Engineer'
+import Engineer from '../pages/EngineerPage'
 
 const amnaRoutes = [
   { path: '/about-us', element: <About /> },
@@ -14,7 +14,8 @@ const amnaRoutes = [
     {path: '/legal', element: <TermsConditions/>},
     {path: '/dashboard', element: <Dashboard/>},
     {path: '/my-projects', element: <MyProjects/>},
-    {path: '/engineer', element: <Engineer/>},
+    {path: '/engineerpage', element: <Engineer/>}
+    
 
 ]
 
