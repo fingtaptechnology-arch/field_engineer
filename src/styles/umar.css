@@ -1685,3 +1685,327 @@
     align-self: flex-start;
   }
 }
+
+
+/* ==========================================================================
+   Marketplace / Job Outlook page (fe-mkt-*)
+   ========================================================================== */
+
+.fe-mkt-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 24px;
+  background: linear-gradient(90deg, #1c3f66 0%, #14314f 100%);
+  flex-wrap: wrap;
+}
+
+.fe-mkt-tabs-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.fe-mkt-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 14px 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  cursor: pointer;
+}
+
+.fe-mkt-tab.is-active {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.fe-mkt-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #14314f;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.fe-mkt-tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2ecc71;
+}
+
+.fe-mkt-owner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.fe-mkt-owner-label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: right;
+}
+
+.fe-mkt-owner-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.fe-mkt-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+}
+
+.fe-mkt-map-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e3e5eb;
+  background: #eef1f4;
+}
+
+.fe-mkt-map {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.fe-mkt-filter-bar {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.fe-mkt-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid #dfe2e8;
+  background: #ffffff;
+  color: #4a4f5c;
+  cursor: pointer;
+}
+
+.fe-mkt-filter-btn:hover {
+  background: #f7f8fa;
+}
+
+.fe-mkt-table-wrap {
+  overflow-x: auto;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.fe-mkt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  min-width: 960px;
+}
+
+.fe-mkt-table thead th {
+  text-align: left;
+  background: #f7f8fa;
+  color: #888;
+  font-weight: 600;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.fe-mkt-table tbody td {
+  vertical-align: top;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #1a1a1a;
+}
+
+.fe-mkt-cell-primary {
+  margin: 0 0 2px;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.85rem;
+}
+
+.fe-mkt-cell-secondary {
+  margin: 0 0 2px;
+  font-size: 0.78rem;
+  color: #8a8f9c;
+}
+
+.fe-mkt-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 2px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.fe-mkt-flag {
+  display: inline-flex;
+  color: #d0342c;
+}
+
+.fe-mkt-tag {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #cfd4dc;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #5a5f6b;
+}
+
+.fe-mkt-status {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #e08a00;
+  line-height: 1.4;
+}
+
+.fe-mkt-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.fe-mkt-timeline-step {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding-left: 4px;
+  padding-bottom: 14px;
+}
+
+.fe-mkt-timeline-step::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 12px;
+  bottom: -2px;
+  width: 1px;
+  background: #dfe2e8;
+}
+
+.fe-mkt-timeline-step:last-child::before {
+  display: none;
+}
+
+.fe-mkt-timeline-step:last-child {
+  padding-bottom: 0;
+}
+
+.fe-mkt-timeline-dot {
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #f2b632;
+}
+
+.fe-mkt-timeline-step.is-done .fe-mkt-timeline-dot {
+  background: #f2b632;
+}
+
+.fe-mkt-timeline-time {
+  margin: 0;
+  font-size: 0.78rem;
+  color: #8a8f9c;
+}
+
+.fe-mkt-timeline-label {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #1a1a1a;
+}
+
+.fe-mkt-action-link {
+  margin: 0 0 4px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1c6fd9;
+}
+
+.fe-mkt-row-controls {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.fe-mkt-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: none;
+  background: none;
+  color: #6b7080;
+  cursor: pointer;
+}
+
+.fe-mkt-icon-btn:hover {
+  background: #f2f3f6;
+  color: #1a1a1a;
+}
+
+@media (max-width: 900px) {
+  .fe-mkt-tabs {
+    padding: 0 12px;
+  }
+
+  .fe-mkt-tabs-left {
+    gap: 16px;
+    overflow-x: auto;
+  }
+
+  .fe-mkt-content {
+    padding: 16px 12px 20px;
+  }
+
+  .fe-mkt-map-wrap {
+    height: 240px;
+  }
+}
