@@ -1,20 +1,45 @@
-import React, { useMemo, useState } from "react";
-import { Sidebar, TopBar } from "../components/FeDashboardShell";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  DashboardIcon,
+  MyJobsIcon,
+  MyProjectsIcon,
+  EngineerIcon,
+  MessagesIcon,
+  FundsIcon,
+  ReportingIcon,
+  TimeManagementIcon,
+  ManageUsersIcon,
+  CustomFieldIcon,
+  CreateJobIcon,
+  MenuIcon,
+  SearchIcon,
+  BellIcon,
+  InfoIcon,
+  DollarIcon,
+  StarIcon,
+} from "../components/icons";
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const MONTH_NAMES = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+// key -> route path, for the sidebar items that already have a page
+const navRoutes = {
+  dashboard: "/dashboard",
+  messages: "/messages",
+  funds: "/funds",
+  reporting: "/reporting",
+
+};
+
+const navItems = [
+  { key: "dashboard", label: "Dashboard", icon: DashboardIcon },
+  { key: "my-jobs", label: "My Jobs", icon: MyJobsIcon },
+  { key: "my-projects", label: "My Projects", icon: MyProjectsIcon },
+  { key: "engineer", label: "Engineer", icon: EngineerIcon },
+  { key: "messages", label: "Messages", icon: MessagesIcon },
+  { key: "funds", label: "Funds", icon: FundsIcon, sub: "Wallet: $0.00" },
+  { key: "reporting", label: "Reporting", icon: ReportingIcon },
+  { key: "time-management", label: "Time Management", icon: TimeManagementIcon },
+  { key: "manage-users", label: "Manage Users", icon: ManageUsersIcon },
+  { key: "custom-field", label: "Custom Field", icon: CustomFieldIcon },
 ];
 
 // Highlighted job date (matches the reference design: Fri, 24 July 2026)
@@ -182,6 +207,96 @@ const activity = [
   },
 ];
 
+function Sidebar() {
+  const navigate = useNavigate();
+  const [active, setActive] = useState("dashboard");
+
+  const handleClick = (item) => {
+    setActive(item.key);
+    const path = navRoutes[item.key];
+    if (path) navigate(path);
+  };
+
+  return (
+    <aside className="fe-dash-sidebar">
+      <div className="fe-dash-sidebar-top">
+        <div className="fe-dash-logo">
+          FE
+          <span>FIELD ENGINEER</span>
+        </div>
+        <button type="button" className="fe-dash-hamburger" aria-label="Menu">
+          <MenuIcon size={18} />
+        </button>
+      </div>
+
+      <button type="button" className="fe-dash-create-job">
+        <span className="fe-plus"><CreateJobIcon size={14} /></span> Create Job
+      </button>
+
+      <nav className="fe-dash-nav">
+        <ul>
+          {navItems.map((item) => (
+            <li key={item.key}>
+              <button
+                type="button"
+                className={`fe-dash-nav-btn ${
+                  active === item.key ? "is-active" : ""
+                }`}
+                onClick={() => handleClick(item)}
+              >
+                <span className="fe-dash-nav-icon">
+                  <item.icon size={16} />
+                </span>
+                <span className="fe-dash-nav-label">
+                  {item.label}
+                  {item.sub && (
+                    <span className="fe-dash-nav-sub">{item.sub}</span>
+                  )}
+                </span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="fe-dash-sidebar-bottom">
+        <button type="button" className="fe-dash-user">
+          <span className="fe-dash-avatar" />
+          Muhammad Chaudry
+        </button>
+        <a href="#feedback">Feedback</a>
+        <a href="#release-notes">Release Notes</a>
+        <a href="#settings">Settings</a>
+        <a href="#signout">Sign Out</a>
+        <button type="button" className="fe-dash-help-btn">
+          Need help?
+        </button>
+      </div>
+    </aside>
+  );
+}
+
+function TopBar() {
+  return (
+    <div className="fe-dash-topbar">
+      <div className="fe-dash-search">
+        <span className="fe-dash-search-icon">
+          <SearchIcon size={14} />
+        </span>
+        <input type="text" placeholder="Search" />
+      </div>
+      <button
+        type="button"
+        className="fe-dash-bell"
+        aria-label="Notifications"
+      >
+        <BellIcon size={18} />
+        <span className="fe-dash-bell-badge">4</span>
+      </button>
+    </div>
+  );
+}
+
 function OverviewBar() {
   return (
     <section className="fe-dash-card fe-dash-overview">
@@ -203,7 +318,9 @@ function MarketplaceCard() {
   return (
     <div className="fe-dash-card fe-dash-panel">
       <div className="fe-dash-panel-header">
-        <span className="fe-dash-panel-icon">&#9432;</span>
+        <span className="fe-dash-panel-icon">
+          <InfoIcon size={14} />
+        </span>
         <h3>Marketplace Job(s)</h3>
       </div>
       <ul className="fe-dash-stat-list">
@@ -239,7 +356,9 @@ function UnpaidVisitsCard() {
   return (
     <div className="fe-dash-card fe-dash-panel">
       <div className="fe-dash-panel-header">
-        <span className="fe-dash-panel-icon">&#36;</span>
+        <span className="fe-dash-panel-icon">
+          <DollarIcon size={14} />
+        </span>
         <h3>Unpaid Visits</h3>
       </div>
       <ul className="fe-dash-stat-list">
@@ -269,7 +388,9 @@ function JobMessagesCard() {
   return (
     <div className="fe-dash-card fe-dash-panel">
       <div className="fe-dash-panel-header">
-        <span className="fe-dash-panel-icon">&#9432;</span>
+        <span className="fe-dash-panel-icon">
+          <InfoIcon size={14} />
+        </span>
         <h3>Job Messages</h3>
       </div>
       <p className="fe-dash-messages-empty">You have 0 unread messages.</p>
@@ -283,6 +404,8 @@ function JobMessagesCard() {
 }
 
 function ProfileCard() {
+  const navigate = useNavigate();
+
   return (
     <div className="fe-dash-card fe-dash-profile">
       <div className="fe-dash-profile-top">
@@ -290,7 +413,11 @@ function ProfileCard() {
         <div>
           <p className="fe-dash-profile-name">Muhammad Chaudry</p>
           <p className="fe-dash-profile-company">FingTap Solutions</p>
-          <div className="fe-dash-stars">☆☆☆☆☆</div>
+          <div className="fe-dash-stars">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <StarIcon key={i} size={13} />
+            ))}
+          </div>
         </div>
         <button type="button" className="fe-dash-edit-btn">
           Edit
@@ -299,7 +426,15 @@ function ProfileCard() {
       <div className="fe-dash-wallet">
         <p className="fe-dash-wallet-label">Wallet</p>
         <p className="fe-dash-wallet-amount">$0.00</p>
-        <a href="#transactions">View transaction history</a>
+        <a
+          href="#transactions"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/funds");
+          }}
+        >
+          View transaction history
+        </a>
       </div>
     </div>
   );
