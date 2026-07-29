@@ -1583,17 +1583,16 @@
 
 /* =========================================================
    Job Outlook Calendar (cloned from reference screenshot)
+   Embedded as a section within the Dashboard page
    ========================================================= */
-.job-outlook-page {
+.fe-dash-job-outlook {
+  margin-top: 24px;
   font-family: "Segoe UI", Arial, sans-serif;
   color: #333333;
-  background: #ffffff;
-  padding: 24px;
 }
 
 .job-outlook-card {
-  max-width: 1100px;
-  margin: 0 auto;
+  width: 100%;
   border: 1px solid #e6e6e6;
   border-radius: 4px;
   overflow: hidden;
@@ -1751,5 +1750,215 @@
   .job-outlook-day-cell {
     min-height: 60px;
     padding: 6px 8px;
+  }
+}
+
+/* =========================================================
+   Shared inner-app page header (My Projects / Engineer / etc.)
+   ========================================================= */
+.fe-page-header {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 24px;
+}
+
+.fe-page-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fe-page-back {
+  color: #16305c;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.fe-page-header-title h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #16305c;
+}
+
+.fe-page-header-desc {
+  flex: 1;
+  min-width: 260px;
+  margin: 0;
+  padding-left: 16px;
+  border-left: 1px solid #d9dce3;
+  font-size: 13px;
+  color: #6b7280;
+  align-self: center;
+}
+
+.fe-page-primary-btn {
+  background: #16305c;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.fe-page-primary-btn:hover {
+  background: #0f223f;
+}
+
+.fe-section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0 0 12px;
+}
+
+/* ---------- Tabs strip (Engineer: Pool / Lookup / Automation / Blocked) ---------- */
+.fe-page-tabs {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  background: linear-gradient(90deg, #1b3a63 0%, #3c6a93 100%);
+  padding: 0 24px;
+}
+
+.fe-page-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 2px;
+  cursor: pointer;
+}
+
+.fe-page-tab.is-active {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+/* ---------- Information panel ---------- */
+.fe-info-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f4f5f7;
+  border: 1px solid #e7e8ec;
+  border-radius: 4px;
+  padding: 20px;
+  font-size: 13px;
+  color: #55596b;
+  line-height: 1.6;
+}
+
+.fe-info-panel-icon {
+  font-size: 20px;
+  color: #16305c;
+  flex-shrink: 0;
+}
+
+.fe-info-panel p {
+  margin: 0;
+}
+
+.fe-info-panel strong {
+  color: #16305c;
+  font-weight: 700;
+}
+
+/* ---------- Table card (My Projects) ---------- */
+.fe-table-card {
+  background: #ffffff;
+  border: 1px solid #e7e8ec;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fe-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.fe-table thead th {
+  background: #f4f5f7;
+  color: #55596b;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e7e8ec;
+}
+
+.fe-table tbody td {
+  padding: 14px 20px;
+  font-size: 13px;
+  color: #333333;
+  border-bottom: 1px solid #eceef2;
+}
+
+.fe-table-link {
+  color: #16305c;
+  font-weight: 600;
+}
+
+.fe-table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
+  font-size: 13px;
+  color: #55596b;
+}
+
+.fe-table-pagination label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fe-table-pagination select {
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: #55596b;
+  cursor: pointer;
+}
+
+.fe-table-pagination button {
+  background: none;
+  border: none;
+  color: #9aa3b2;
+  font-size: 15px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.fe-table-pagination button:hover {
+  color: #16305c;
+  background: #ececec;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .fe-page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fe-page-header-desc {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .fe-page-tabs {
+    overflow-x: auto;
+    gap: 18px;
   }
 }
