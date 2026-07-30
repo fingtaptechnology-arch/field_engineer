@@ -14,7 +14,7 @@ const getStartedLinks = [
 ];
 
 const howItWorksLinks = [
-  { label: "How It Works: Engineers", href: "/engineer" },
+  { label: "How It Works: Engineers", href: "/how-it-works-engineer" },
   { label: "How It Works: Businesses", href: "/how-it-works-businesses" },
 ];
 

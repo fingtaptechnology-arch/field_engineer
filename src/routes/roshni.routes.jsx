@@ -9,7 +9,7 @@ import TimeManagement from "../pages/TimeManagement"
 const roshniRoutes = [
   { path: '/', element: <Home /> },
   { path: '/how-it-works-businesses', element: <HowItWorksBusiness /> },
-  { path: '/engineer', element: <HowItWorksEngineer /> },
+  { path: '/how-it-works-engineer', element: <HowItWorksEngineer /> },
   { path: '/skills', element: <Skills /> },
   { path: '/help', element: <Help /> },
   { path: '/manage-users', element: <ManageUsers /> },

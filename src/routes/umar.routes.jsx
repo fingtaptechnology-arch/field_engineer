@@ -17,7 +17,7 @@ const umarRoutes = [
   { path: '/blogs/:slug', element: <BlogPost /> },
   { path: '/applyforjobs', element: <EngineerSignUp/> },
   { path: '/hireanengineer', element: <BusinessSignUp /> },
-  { path: '/joboutlook', element: <Marketplace /> },
+  { path: '/myjob', element: <Marketplace /> },
   { path: '/messages', element: <Messages /> },
   { path: '/funds', element: <Funds /> },
   { path: '/reporting', element: <Reporting /> },

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const navLinks = [
   { label: "How it Works", href: "/how-it-works-businesses" },
-  { label: "Find Engineering Jobs", href: "/engineer" },
+  { label: "Find Engineering Jobs", href: "/how-it-works-engineer" },
   { label: "Blog", href: "/blogs" },
 ];
 

@@ -1,17 +1,33 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import {
+  DashboardIcon,
+  MyJobsIcon,
+  MyProjectsIcon,
+  EngineerIcon,
+  MessagesIcon,
+  FundsIcon,
+  ReportingIcon,
+  TimeManagementIcon,
+  ManageUsersIcon,
+  CreateJobIcon,
+  MenuIcon,
+  SearchIcon,
+  BellIcon,
+} from "./icons";
 
+// Single source of truth for the dashboard sidebar. Every item has a real
+// `path` so it always navigates, no matter which page it's clicked from.
 export const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: "🏠", path: "/dashboard" },
-  { key: "my-jobs", label: "My Jobs", icon: "📍" },
-  { key: "my-projects", label: "My Projects", icon: "🗂", path: "/my-projects" },
-  { key: "engineer", label: "Engineer", icon: "👥", path: "/engineer" },
-  { key: "messages", label: "Messages", icon: "💬" },
-  { key: "funds", label: "Funds", icon: "💰", sub: "Wallet: $0.00" },
-  { key: "reporting", label: "Reporting", icon: "📊" },
-  { key: "time-management", label: "Time Management", icon: "⏱" },
-  { key: "manage-users", label: "Manage Users", icon: "🧑‍💼" },
-  { key: "custom-field", label: "Custom Field", icon: "📋" },
+  { key: "dashboard", label: "Dashboard", icon: DashboardIcon, path: "/dashboard" },
+  { key: "my-jobs", label: "My Jobs", icon: MyJobsIcon, path: "/myjob" },
+  { key: "my-projects", label: "My Projects", icon: MyProjectsIcon, path: "/my-projects" },
+  { key: "engineer", label: "Engineer", icon: EngineerIcon, path: "/engineer" },
+  { key: "messages", label: "Messages", icon: MessagesIcon, path: "/messages" },
+  { key: "funds", label: "Funds", icon: FundsIcon, path: "/funds", sub: "Wallet: $0.00" },
+  { key: "reporting", label: "Reporting", icon: ReportingIcon, path: "/reporting" },
+  { key: "time-management", label: "Time Management", icon: TimeManagementIcon, path: "/time-management" },
+  { key: "manage-users", label: "Manage Users", icon: ManageUsersIcon, path: "/manage-users" },
 ];
 
 export function Sidebar() {
@@ -25,47 +41,38 @@ export function Sidebar() {
           <span>FIELD ENGINEER</span>
         </div>
         <button type="button" className="fe-dash-hamburger" aria-label="Menu">
-          &#9776;
+          <MenuIcon size={18} />
         </button>
       </div>
 
       <button type="button" className="fe-dash-create-job">
-        <span className="fe-plus">+</span> Create Job
+        <span className="fe-plus">
+          <CreateJobIcon size={14} />
+        </span>{" "}
+        Create Job
       </button>
 
       <nav className="fe-dash-nav">
         <ul>
           {navItems.map((item) => {
-            const isActive = item.path
-              ? location.pathname === item.path
-              : false;
-
-            const content = (
-              <>
-                <span className="fe-dash-nav-icon">{item.icon}</span>
-                <span className="fe-dash-nav-label">
-                  {item.label}
-                  {item.sub && (
-                    <span className="fe-dash-nav-sub">{item.sub}</span>
-                  )}
-                </span>
-              </>
-            );
+            const isActive = location.pathname === item.path;
 
             return (
               <li key={item.key}>
-                {item.path ? (
-                  <Link
-                    to={item.path}
-                    className={`fe-dash-nav-btn ${isActive ? "is-active" : ""}`}
-                  >
-                    {content}
-                  </Link>
-                ) : (
-                  <button type="button" className="fe-dash-nav-btn">
-                    {content}
-                  </button>
-                )}
+                <Link
+                  to={item.path}
+                  className={`fe-dash-nav-btn ${isActive ? "is-active" : ""}`}
+                >
+                  <span className="fe-dash-nav-icon">
+                    <item.icon size={16} />
+                  </span>
+                  <span className="fe-dash-nav-label">
+                    {item.label}
+                    {item.sub && (
+                      <span className="fe-dash-nav-sub">{item.sub}</span>
+                    )}
+                  </span>
+                </Link>
               </li>
             );
           })}
@@ -93,7 +100,9 @@ export function TopBar() {
   return (
     <div className="fe-dash-topbar">
       <div className="fe-dash-search">
-        <span className="fe-dash-search-icon">&#128269;</span>
+        <span className="fe-dash-search-icon">
+          <SearchIcon size={14} />
+        </span>
         <input type="text" placeholder="Search" />
       </div>
       <button
@@ -101,7 +110,7 @@ export function TopBar() {
         className="fe-dash-bell"
         aria-label="Notifications"
       >
-        &#128276;
+        <BellIcon size={18} />
         <span className="fe-dash-bell-badge">4</span>
       </button>
     </div>
